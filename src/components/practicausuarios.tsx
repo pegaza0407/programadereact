@@ -51,7 +51,7 @@ export default function Userform(){
     const[usarios,setUsuarios]=useState<User[]>([]);
     const[nuevoUsuario,setNuevoUsuario]=useState<Omit<User,'_id'|'price'>>({name:'',phonenumber:''});
     const[editingUSer,setEditingUSer]=useState<User|null>(null);
-    const API_URL='https://www.google.com/';
+    const API_URL='https://mi-backend-a3h0.onrender.com';
 
     useEffect(()=>{
         //es un hook se ejecuta pro primera vez o cuando cambias ciertas dependencias.
