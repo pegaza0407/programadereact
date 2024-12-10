@@ -90,7 +90,7 @@ export default function Userform(){
 
             const response =await fetch( url,{
                 method:method,
-                headers:{'Content_Type':'application/json'},
+                headers:{'Content-Type':'application/json'},
                 body: JSON.stringify(nuevoUsuario)
 
             });
