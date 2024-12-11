@@ -107,6 +107,8 @@ export default function Datosdevendedor(): React.JSX.Element{
                     value={nuevavisita.fechavisita.toISOString().split('T')[0] }
                     onChange={handleChange} name="fechavisita"/>
 
+                <input type="file"  />
+
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
             </form>
