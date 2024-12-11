@@ -43,6 +43,8 @@ export default function Datosdevendedor(): React.JSX.Element{
         label_registro:'',
         fechavisita: new Date()});
 
+        const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitas';
+
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -55,11 +57,39 @@ export default function Datosdevendedor(): React.JSX.Element{
             }
           };
 
+          const guardarbasedeDatos = async (e: React.FormEvent) => {
+            e.preventDefault();
+            try {
+              const method =  'POST';
+              const url = API_URL;
+              const response = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(nuevavisita)
+              });
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              setNuevavisita({  
+                nom_ferre:'',
+                ciudad:'',
+                estado:'',
+                nombreencargado:'',
+                telefono:'',
+                label_registro:'',
+                fechavisita: new Date()});
+              
+            } catch (error) {
+              console.error('Error submitting product:', error);
+            }
+          };
+
+        
 
     return(
         <div>
             <h1>REGISTRO VISITAS DE CLIENTES</h1>
-            <form>
+            <form onSubmit={guardarbasedeDatos}>
                 <input type="text" placeholder="Nombre del negocio" value={nuevavisita.nom_ferre}
                         onChange={(e)=>setNuevavisita({...nuevavisita,nom_ferre:e.target.value})} style={inputEstilo}/> <br></br>
                 <input type="text" placeholder="Ciudad" value={nuevavisita.ciudad}
@@ -78,6 +108,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                     onChange={handleChange} name="fechavisita"/>
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
+               
             </form>
         </div>
 
