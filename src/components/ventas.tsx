@@ -85,6 +85,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
           const guardarbasedeDatos = async (e: React.FormEvent) => {
             e.preventDefault();
+            console.log("SE HA GUARDADO");
             try {
               const method =  'POST';
               const url = API_URL;
@@ -109,7 +110,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 imagen:'',
                 });
               
-                console.log("SE HA GUARDADO"); 
+                 
 
             } catch (error) {
               console.error('Error submitting product:', error);
@@ -144,6 +145,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 <input type="file" accept="image/*" onChange={cambiodeImgen} />
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
+            
                
             </form>
 
