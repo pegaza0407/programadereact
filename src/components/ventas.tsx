@@ -96,6 +96,7 @@ export default function Datosdevendedor(): React.JSX.Element{
             });
               if (!response.ok) {
                 throw new Error('Network response was not ok');
+                console.log("Hola");
               }
 
 
@@ -145,8 +146,8 @@ export default function Datosdevendedor(): React.JSX.Element{
                 <input type="file" accept="image/*" onChange={cambiodeImgen} />
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
-            
-                console.log("agregdado");
+               
+               
             </form>
 
         </div>
