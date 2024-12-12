@@ -99,7 +99,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 
               }
 
-              if(response.ol){
+              if(response.ok){
                 setMensaje('guardado');
 
               }
