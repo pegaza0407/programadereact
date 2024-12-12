@@ -11,7 +11,7 @@ function App() {
     {/*<Nombreetiqueta></Nombreetiqueta>*/}
      {/*<Userform></Userform>*/}
     <Datosdevendedor></Datosdevendedor>
-    </div>
+    </div>  
   );
 }
 
