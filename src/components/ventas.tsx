@@ -85,7 +85,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
           const guardarbasedeDatos = async (e: React.FormEvent) => {
             e.preventDefault();
-            console.log("SE HA GUARDADO");
+            
             try {
               const method =  'POST';
               const url = API_URL;
@@ -146,7 +146,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
             
-               
+                console.log("agregdado");
             </form>
 
         </div>
