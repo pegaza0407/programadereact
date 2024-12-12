@@ -47,7 +47,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
     });
         
-        const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitados';
+        const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitas';
 
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +92,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 method: method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(nuevavisita)
-              });
+            });
               if (!response.ok) {
                 throw new Error('Network response was not ok');
               }
@@ -110,6 +110,7 @@ export default function Datosdevendedor(): React.JSX.Element{
             } catch (error) {
               console.error('Error submitting product:', error);
             }
+            console('listo');
           };
 
         
