@@ -80,7 +80,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
           };
 
-
+          const [mensaje, setMensaje] = useState('');
 
 
           const guardarbasedeDatos = async (e: React.FormEvent) => {
@@ -99,7 +99,10 @@ export default function Datosdevendedor(): React.JSX.Element{
                 
               }
 
+              if(response.ol){
+                setMensaje('guardado');
 
+              }
               setNuevavisita({  
                 nom_ferre:'',
                 ciudad:'',
