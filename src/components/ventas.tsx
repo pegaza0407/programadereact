@@ -96,6 +96,8 @@ export default function Datosdevendedor(): React.JSX.Element{
               if (!response.ok) {
                 throw new Error('Network response was not ok');
               }
+
+
               setNuevavisita({  
                 nom_ferre:'',
                 ciudad:'',
@@ -105,13 +107,15 @@ export default function Datosdevendedor(): React.JSX.Element{
                 label_registro:'',
                 fechavisita: new Date(),
                 imagen:'',
-            });
+                });
               
+                console.log("SE HA GUARDADO"); 
+
             } catch (error) {
               console.error('Error submitting product:', error);
             }
 
-            console.error('Todo bien:', error);
+            
         };
 
         
@@ -142,6 +146,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
             </form>
+
         </div>
 
     );
