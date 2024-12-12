@@ -110,8 +110,9 @@ export default function Datosdevendedor(): React.JSX.Element{
             } catch (error) {
               console.error('Error submitting product:', error);
             }
-            console('listo');
-          };
+
+            console.error('Todo bien:', error);
+        };
 
         
 
