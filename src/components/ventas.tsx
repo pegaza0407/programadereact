@@ -96,7 +96,7 @@ export default function Datosdevendedor(): React.JSX.Element{
             });
               if (!response.ok) {
                 throw new Error('Network response was not ok');
-                console.log("Hola");
+                
               }
 
 
@@ -117,7 +117,7 @@ export default function Datosdevendedor(): React.JSX.Element{
               console.error('Error submitting product:', error);
             }
 
-            
+            console.log("Hola");
         };
 
         
