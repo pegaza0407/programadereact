@@ -10,6 +10,7 @@ nombreencargado:string;
 telefono:string;
 label_registro:string;
 fechavisita:Date;
+imagen:string;
 }
 
 
@@ -41,8 +42,11 @@ export default function Datosdevendedor(): React.JSX.Element{
         nombreencargado:'',
         telefono:'',
         label_registro:'',
-        fechavisita: new Date()});
+        fechavisita: new Date(),
+        imagen: ''
 
+    });
+        
         const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitas';
 
 
@@ -56,6 +60,28 @@ export default function Datosdevendedor(): React.JSX.Element{
               setNuevavisita((prev) => ({ ...prev, [name]: value }));
             }
           };
+
+
+          const cambiodeImgen =(e: React.ChangeEvent<HTMLInputElement>)=>{
+            const archivo=e.target.files?.[0];
+            if(archivo){
+                const leer =new FileReader();
+                leer.onload=()=>{
+                    setNuevavisita((prev)=>({
+                    ...prev,
+                    imagen: leer.result as string,
+                    }));
+                 };
+                 leer.readAsDataURL(archivo);
+
+            }
+
+
+
+          };
+
+
+
 
           const guardarbasedeDatos = async (e: React.FormEvent) => {
             e.preventDefault();
@@ -77,7 +103,9 @@ export default function Datosdevendedor(): React.JSX.Element{
                 nombreencargado:'',
                 telefono:'',
                 label_registro:'',
-                fechavisita: new Date()});
+                fechavisita: new Date(),
+                imagen:'',
+            });
               
             } catch (error) {
               console.error('Error submitting product:', error);
@@ -107,7 +135,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                     value={nuevavisita.fechavisita.toISOString().split('T')[0] }
                     onChange={handleChange} name="fechavisita"/>
 
-                <input type="file"  />
+                <input type="file" accept="image/*" onChange={cambiodeImgen} />
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
