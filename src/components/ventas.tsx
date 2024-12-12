@@ -120,7 +120,7 @@ export default function Datosdevendedor(): React.JSX.Element{
               console.error('Error submitting product:', error);
             }
 
-            console.log("Hola");
+            
         };
 
         
