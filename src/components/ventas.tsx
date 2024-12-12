@@ -96,6 +96,7 @@ export default function Datosdevendedor(): React.JSX.Element{
             });
               if (!response.ok) {
                 throw new Error('Network response was not ok');
+                setMensaje('no guardado');
                 
               }
 
@@ -150,7 +151,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
-               
+               <h2>{setMensaje}</h2>
             </form>
 
         </div>
