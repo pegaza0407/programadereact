@@ -99,11 +99,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 
               }
 
-              if (response.ok) {
-                console('guardado');
-               
-                
-              }
+              
               setNuevavisita({  
                 nom_ferre:'',
                 ciudad:'',
@@ -146,8 +142,8 @@ export default function Datosdevendedor(): React.JSX.Element{
                 <input type="date" placeholder="Fecha de la visita" 
                     value={nuevavisita.fechavisita.toISOString().split('T')[0] }
                     onChange={handleChange} name="fechavisita"/>
-
-                <input type="file" accept="image/*" onChange={cambiodeImgen} />
+                {/* <input type="file" accept="image/*" onChange={cambiodeImgen} /> */}            
+                
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
