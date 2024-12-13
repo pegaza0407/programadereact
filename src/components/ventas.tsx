@@ -99,7 +99,11 @@ export default function Datosdevendedor(): React.JSX.Element{
                 
               }
 
-              
+              if (response.ok) {
+                console('guardado');
+               
+                
+              }
               setNuevavisita({  
                 nom_ferre:'',
                 ciudad:'',
