@@ -80,8 +80,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
           };
 
-          const [mensaje, setMensaje] = useState('');
-
+        
 
           const guardarbasedeDatos = async (e: React.FormEvent) => {
             e.preventDefault();
@@ -96,14 +95,11 @@ export default function Datosdevendedor(): React.JSX.Element{
             });
               if (!response.ok) {
                 throw new Error('Network response was not ok');
-                setMensaje('no guardado');
+               
                 
               }
 
-              if(response.ok){
-                setMensaje('guardado');
-
-              }
+              
               setNuevavisita({  
                 nom_ferre:'',
                 ciudad:'',
@@ -151,7 +147,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
-               <h2>{setMensaje}</h2>
+              
             </form>
 
         </div>
