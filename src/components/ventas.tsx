@@ -49,7 +49,7 @@ export default function Datosdevendedor(): React.JSX.Element{
         
         const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitas';
 
-
+        
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
         
@@ -143,7 +143,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                     value={nuevavisita.fechavisita.toISOString().split('T')[0] }
                     onChange={handleChange} name="fechavisita"/>
                 {/* <input type="file" accept="image/*" onChange={cambiodeImgen} /> */}            
-                
+                HOLA
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                
