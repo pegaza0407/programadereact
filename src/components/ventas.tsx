@@ -47,7 +47,7 @@ export default function Datosdevendedor(): React.JSX.Element{
 
     });
         
-        const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitas';
+        const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitados';
 
         
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
