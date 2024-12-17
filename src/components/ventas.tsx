@@ -46,7 +46,7 @@ export default function Datosdevendedor(): React.JSX.Element{
         imagen: ''
 
     });
-        
+        const [arreglovisitas,setArreglovisitas]= useState<Vendedor[]>([]);
         const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitados';
 
         
@@ -119,8 +119,21 @@ export default function Datosdevendedor(): React.JSX.Element{
 
             
         };
+    
 
-        
+        const verdatos= async()=>{
+            try{
+                const respuesta =await fetch('https://mi-backend-a3h0.onrender.com/visitados');
+                if (!respuesta.ok) throw new Error('Error buscando datos');
+                 const datos1:Vendedor[]=await respuesta.json();   
+                 setArreglovisitas(datos1);
+            }catch(error){
+                console.error('Error imagen:', error);
+
+            }
+
+
+        }
 
     return(
         <div>
@@ -148,10 +161,33 @@ export default function Datosdevendedor(): React.JSX.Element{
               
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
+            
                
               
             </form>
 
+            <button onClick={verdatos}>ver datos</button>
+
+            <div>
+                {arreglovisitas.map((cadavisita)=>(
+                    <div key={cadavisita._id}>
+                        <h3>{cadavisita.nom_ferre}- {cadavisita.ciudad}</h3>
+                        <p><strong> Encargado</strong>{cadavisita.nombreencargado}</p>
+                        <p><strong> Telefono</strong>{cadavisita.telefono}</p>
+                        <p><strong> Fecha</strong>{new Date(cadavisita.fechavisita).toLocaleDateString()}</p>
+                        {/* mostrar imagen*/}
+                        {cadavisita.imagen&&(
+                            <img src={cadavisita.imagen} alt="imagen" />
+                        )}
+
+                    </div>
+
+               )
+                      
+            )}
+
+
+            </div>
         </div>
 
     );
