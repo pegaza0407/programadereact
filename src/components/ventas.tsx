@@ -125,7 +125,7 @@ export default function Datosdevendedor(): React.JSX.Element{
             try{
                 const respuesta =await fetch('https://mi-backend-a3h0.onrender.com/visitados');
                 if (!respuesta.ok) throw new Error('Error buscando datos');
-                 const datos1:Vendedor[]=await respuesta.json();   
+                 const datos1=await respuesta.json();   
                  setArreglovisitas(datos1);
             }catch(error){
                 console.error('Error imagen:', error);
