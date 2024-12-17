@@ -111,7 +111,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                 imagen:'',
                 });
               
-                 
+                alert( `Datos guardados`);   
 
             } catch (error) {
               console.error('Error submitting product:', error);
@@ -143,7 +143,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                     value={nuevavisita.fechavisita.toISOString().split('T')[0] }
                     onChange={handleChange} name="fechavisita"/>
                 {/* <input type="file" accept="image/*" onChange={cambiodeImgen} /> */}            
-                HOLA
+              
 
                 <button type="submit" style={buttonEstilo}>Agregar visita</button>
                

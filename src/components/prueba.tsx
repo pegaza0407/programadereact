@@ -14,8 +14,11 @@ const FormularioCaptura = () => {
     const manejarEnvio = (event) => {
         event.preventDefault(); // Evita que la página se recargue
         
-        alert( 'Nombre capturado': ${nombre});
+        alert( `Nombre capturado: ${nombre}`);
     // Aquí puedes agregar lógica para enviar los datos a un servidor, etc.
+
+
+
   };
 
   return (
