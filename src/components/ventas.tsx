@@ -166,13 +166,16 @@ export default function Datosdevendedor(): React.JSX.Element{
                 <input type="file" accept="image/*" onChange={cambiodeImgen} />             
               
 
-                <button type="submit" style={buttonEstilo}>Agregar visita</button>
-            
+                <button type="submit" style={buttonEstilo}>Agregar Cliente</button>
+               
+
                
               
             </form>
-
-            <button onClick={verdatos}>buscar todos los datos</button>
+            
+            <button type="submit" style={buttonEstilo}>Agregar visita</button>
+            <button type="submit" style={buttonEstilo}>Consultar cliente</button>
+            <button onClick={verdatos} style={buttonEstilo}>Consultar todos los datos</button>
 
             <div>
                 {arreglovisitas.map((cadavisita)=>(
