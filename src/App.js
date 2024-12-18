@@ -1,17 +1,46 @@
-
 import './App.css';
-import Nombreetiqueta from './components/ensenarreact.tsx';
-import ProductList from './components/ProductList.tsx';
-import Userform from './components/practicausuarios.tsx';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Vendedores from './components/ventas.tsx';
+import AgregarCliente from './components/AgregarCliente.tsx';
+import AgregarVisita from './components/AgregarVisita.tsx';
+import ConsultarCliente from './components/ConsultarCliente.tsx';
+import ConsultarVisitas from './components/ConsultarVisitas.tsx';
 import Datosdevendedor from './components/ventas.tsx';
 
 function App() {
   return (
     <div>
-    {/*<Nombreetiqueta></Nombreetiqueta>*/}
-     {/*<Userform></Userform>*/}
-    <Datosdevendedor></Datosdevendedor>
-    </div>  
+      <Router>
+      <div >
+        <Routes>
+          <Route path="/" element={
+            <>
+              <h1 >Página Principal</h1>
+              <div>
+                <Link to="/vendedores">
+                  <button className="w-full">Vendedores</button>
+                </Link>
+                <Link to="/personas">
+                  <button className="w-full">Personas</button>
+                </Link>
+                <Link to="/compradores">
+                  <button className="w-full">Compradores</button>
+                </Link>
+                <Link to="/otros">
+                  <button className="w-full">Otros</button>
+                </Link>
+              </div>
+            </>
+          } />
+          <Route path="/vendedores" element={<Datosdevendedor/>} />
+          <Route path="/vendedores/agregar-cliente" element={<AgregarCliente />} />
+          <Route path="/vendedores/agregar-visita" element={<AgregarVisita />} />
+          <Route path="/vendedores/consultar-cliente" element={<ConsultarCliente />} />
+          <Route path="/vendedores/consultar-visitas" element={<ConsultarVisitas />} />
+        </Routes>
+      </div>
+    </Router>
+    </div>
   );
 }
 
