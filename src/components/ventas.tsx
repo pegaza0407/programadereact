@@ -33,6 +33,12 @@ const inputEstilo: React.CSSProperties = {
     cursor: 'pointer',
   };
 
+
+  const imagenestilo:React.CSSProperties={
+    width: '30%',
+    
+  }
+
 export default function Datosdevendedor(): React.JSX.Element{
 
     const[nuevavisita,setNuevavisita]=useState < Omit < Vendedor,'_id'>>({
@@ -177,7 +183,7 @@ export default function Datosdevendedor(): React.JSX.Element{
                         <p><strong> Fecha</strong>{new Date(cadavisita.fechavisita).toLocaleDateString()}</p>
                         {/* mostrar imagen*/}
                         {cadavisita.imagen&&(
-                            <img src={cadavisita.imagen} alt="imagen" />
+                            <img src={cadavisita.imagen} alt="imagen" style={imagenestilo}/>
                         )}
 
                     </div>
