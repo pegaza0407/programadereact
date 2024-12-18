@@ -172,19 +172,25 @@ export default function Datosdevendedor(): React.JSX.Element{
               
             </form>
 
-            <button onClick={verdatos}>ver datos</button>
+            <button onClick={verdatos}>buscar todos los datos</button>
 
             <div>
                 {arreglovisitas.map((cadavisita)=>(
                     <div key={cadavisita._id}>
-                        <h3>{cadavisita.nom_ferre}- {cadavisita.ciudad}</h3>
+                        <h3>{cadavisita.nom_ferre} </h3>
+                        <p><strong> Ciudad</strong>{cadavisita.ciudad} - {cadavisita.estado}</p>
                         <p><strong> Encargado</strong>{cadavisita.nombreencargado}</p>
                         <p><strong> Telefono</strong>{cadavisita.telefono}</p>
+                        <p><strong> Texto visita</strong>{cadavisita.label_registro}</p>
                         <p><strong> Fecha</strong>{new Date(cadavisita.fechavisita).toLocaleDateString()}</p>
                         {/* mostrar imagen*/}
                         {cadavisita.imagen&&(
                             <img src={cadavisita.imagen} alt="imagen" style={imagenestilo}/>
                         )}
+                
+             
+               
+
 
                     </div>
 
