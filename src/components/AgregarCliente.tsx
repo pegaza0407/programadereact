@@ -69,7 +69,7 @@ export default function AgregarCliente(): React.JSX.Element{
 
     });
         const [arreglovisitas,setArreglovisitas]= useState<Vendedor[]>([]);
-        const  API_URL = 'https://mi-backend-a3h0.onrender.com/visitados';
+        const  API_URL = 'https://mi-backend-a3h0.onrender.com/vendedores';
 
         
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,7 +145,7 @@ export default function AgregarCliente(): React.JSX.Element{
 
         const verdatos= async()=>{
             try{
-                const respuesta =await fetch('https://mi-backend-a3h0.onrender.com/visitados');
+                const respuesta =await fetch('https://mi-backend-a3h0.onrender.com/vendedores');
                 if (!respuesta.ok) throw new Error('Error buscando datos');
                  const datos1=await respuesta.json();   
                  setArreglovisitas(datos1);
