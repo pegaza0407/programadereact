@@ -21,13 +21,16 @@ function App() {
                   <button className="w-full">Vendedores</button>
                 </Link>
                 <Link to="/personas">
-                  <button className="w-full">Personas</button>
+                  <button className="w-full">Pegaza</button>
                 </Link>
                 <Link to="/compradores">
-                  <button className="w-full">Compradores</button>
+                  <button className="w-full">Agregados</button>
                 </Link>
                 <Link to="/otros">
-                  <button className="w-full">Otros</button>
+                  <button className="w-full">Mina</button>
+                </Link>
+                <Link to="/otros">
+                  <button className="w-full">Villareal</button>
                 </Link>
               </div>
             </>

@@ -3,14 +3,28 @@ import React, { useState } from "react";
 
 interface Vendedor{
 _id:string;
-nom_ferre:string;
-ciudad:string;
-estado:string;
-nombreencargado:string;
-telefono:string;
+//nom_ferre:string;
+//ciudad:string;
+//estado:string;
+//nombreencargado:string;
+//telefono:string;
 //label_registro:string;
 //fechavisita:Date;
-imagen:string;
+//imagen:string;
+
+
+peg_num_clien:string;
+peg_nom_clien:string;
+peg_ciu_clien:string;
+peg_est_clien:string;
+peg_nom_enc_clien:string;
+peg_tel_clien:string;
+peg_tex_clien:string;
+peg_ima_clien:string;
+peg_sino_clien:boolean;
+peg_ubi_clien:string;
+
+
 }
 
 
@@ -58,14 +72,25 @@ const inputEstilo: React.CSSProperties = {
 export default function AgregarCliente(): React.JSX.Element{
 
     const[nuevavisita,setNuevavisita]=useState < Omit < Vendedor,'_id'>>({
-        nom_ferre:'',
-        ciudad:'',
-        estado:'',
-        nombreencargado:'',
-        telefono:'',
+      peg_num_clien:'',
+      peg_nom_clien:'',
+      peg_ciu_clien:'',
+      peg_est_clien:'',
+      peg_nom_enc_clien:'',
+      peg_tel_clien:'',
+      peg_tex_clien:'',
+      peg_ima_clien:'',
+      peg_sino_clien:false,
+      peg_ubi_clien:'',
+      
+   
+       // nom_ferre:'',
+       // ciudad:'',
+        //estado:'',
+        //nombreencargado:'',
+        //telefono:'',
         //label_registro:'',
         //fechavisita: new Date(),
-        imagen: ''
 
     });
         const [arreglovisitas,setArreglovisitas]= useState<Vendedor[]>([]);
@@ -102,7 +127,18 @@ export default function AgregarCliente(): React.JSX.Element{
 
           };
 
-        
+          const cambio_pega_sino_clie=(e: React.ChangeEvent<HTMLInputElement>)=>{
+              const {type,value}=e.target;
+              if(type=='checkbox'){
+              setNuevavisita((prev)=>({
+                  ...prev,
+                  peg_sino_clien: (e.target as HTMLInputElement).checked
+                  }));
+
+              }
+          }
+
+
 
           const guardarbasedeDatos = async (e: React.FormEvent) => {
             e.preventDefault();
@@ -123,14 +159,25 @@ export default function AgregarCliente(): React.JSX.Element{
 
               
               setNuevavisita({  
-                nom_ferre:'',
-                ciudad:'',
-                estado:'',
-                nombreencargado:'',
-                telefono:'',
+                peg_num_clien:'',
+                peg_nom_clien:'',
+                peg_ciu_clien:'',
+                peg_est_clien:'',
+                peg_nom_enc_clien:'',
+                peg_tel_clien:'',
+                peg_tex_clien:'',
+                peg_ima_clien:'',
+                peg_sino_clien:false,
+                peg_ubi_clien:'',
+
+               // nom_ferre:'',
+                //ciudad:'',
+                //estado:'',
+                //nombreencargado:'',
+                //telefono:'',
                 //label_registro:'',
                 //fechavisita: new Date(),
-                imagen:'',
+                //imagen:'',
                 });
               
                 alert( `Datos guardados`);   
@@ -161,18 +208,29 @@ export default function AgregarCliente(): React.JSX.Element{
         <div>
             <h1>REGISTRO VISITAS DE CLIENTES</h1>
             <form onSubmit={guardarbasedeDatos}>
-                <input type="text" placeholder="Nombre del negocio" value={nuevavisita.nom_ferre}
-                        onChange={(e)=>setNuevavisita({...nuevavisita,nom_ferre:e.target.value})} style={inputEstilo}/> <br></br>
-                <input type="text" placeholder="Ciudad" value={nuevavisita.ciudad}
-                        onChange={(e)=>setNuevavisita({...nuevavisita,ciudad:e.target.value})}style={inputEstilo}/>
-                <input type="text" placeholder="Estado" value={nuevavisita.estado}
-                        onChange={(e)=>setNuevavisita({...nuevavisita,estado:e.target.value})}style={inputEstilo}/><br></br>
-                <input type="text" placeholder="Nombre del encargado" value={nuevavisita.nombreencargado}
-                        onChange={(e)=>setNuevavisita({...nuevavisita,nombreencargado:e.target.value})}style={inputEstilo}/>
-                <input type="text" placeholder="Telefono" value={nuevavisita.telefono}
-                        onChange={(e)=>setNuevavisita({...nuevavisita,telefono:e.target.value})}style={inputEstilo}/><br></br>
+                <input type="text" placeholder="Nombre del negocio" value={nuevavisita.peg_num_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_num_clien:e.target.value})} style={inputEstilo}/> <br></br>
+                <input type="text" placeholder="Ciudad" value={nuevavisita.peg_nom_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_nom_clien:e.target.value})}style={inputEstilo}/>
+                <input type="text" placeholder="Estado" value={nuevavisita.peg_ciu_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_ciu_clien:e.target.value})}style={inputEstilo}/><br></br>
+                <input type="text" placeholder="Nombre del encargado" value={nuevavisita.peg_est_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_est_clien:e.target.value})}style={inputEstilo}/>
+                <input type="text" placeholder="Telefono" value={nuevavisita.peg_nom_enc_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_nom_enc_clien:e.target.value})}style={inputEstilo}/><br></br>
+                <input type="text" placeholder="Telefono" value={nuevavisita.peg_tel_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_tel_clien:e.target.value})}style={inputEstilo}/><br></br>
+                <input type="text" placeholder="Telefono" value={nuevavisita.peg_tex_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_tex_clien:e.target.value})}style={inputEstilo}/><br></br>
+                 <label>algo
+                <input type="checkbox" checked={nuevavisita.peg_sino_clien}
                 
-                
+                        onChange={cambio_pega_sino_clie}/><br></br></label>
+                <input type="text" placeholder="Telefono" value={nuevavisita.peg_ubi_clien}
+                        onChange={(e)=>setNuevavisita({...nuevavisita,peg_ubi_clien:e.target.value})}style={inputEstilo}/><br></br>
+                                    
+                               
+               
                 
 
                 <input type="file" accept="image/*" onChange={cambiodeImgen} />             
@@ -184,7 +242,7 @@ export default function AgregarCliente(): React.JSX.Element{
                
               
             </form>
-            
+          {/*  AQUI SE PONEN TODOS LOS DATOS CON MAP
           <div>
               <button onClick={verdatos}>Ver datos</button>
                 <div>
@@ -203,7 +261,7 @@ export default function AgregarCliente(): React.JSX.Element{
                   </div>
               
           </div>
-            
+           */} 
 
         </div>
 
