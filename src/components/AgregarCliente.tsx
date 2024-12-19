@@ -192,7 +192,9 @@ export default function AgregarCliente(): React.JSX.Element{
                            <div key={index}>
 
                               <strong>nombre</strong><p>{vendedor.nom_ferre}</p>
-
+                              <strong>imagen</strong><p>{vendedor.imagen}</p>
+                              <strong>imagen1</strong> <img src={vendedor.imagen}></img>
+                             
                            </div>   
                               
 
