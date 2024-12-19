@@ -185,12 +185,17 @@ export default function AgregarCliente(): React.JSX.Element{
               
             </form>
             
-            
+          <div>
+              <button onSubmit={verdatos}>Ver datos</button>
+                <strong>nombre</strong><p>{nuevavisita.nom_ferre}</p>
 
-
+          </div>
             
 
         </div>
+
+      
+
 
     );
 }
