@@ -186,9 +186,20 @@ export default function AgregarCliente(): React.JSX.Element{
             </form>
             
           <div>
-              <button onSubmit={verdatos}>Ver datos</button>
-                <strong>nombre</strong><p>{nuevavisita.nom_ferre}</p>
+              <button onClick={verdatos}>Ver datos</button>
+                <div>
+                      {arreglovisitas.map((vendedor,index)=>(
+                           <div key={index}>
 
+                              <strong>nombre</strong><p>{vendedor.nom_ferre}</p>
+
+                           </div>   
+                              
+
+                      ))}                  
+                            
+                  </div>
+              
           </div>
             
 
