@@ -152,7 +152,7 @@ export default function AgregarCliente(): React.JSX.Element{
                 body: JSON.stringify(nuevavisita)
             });
               if (!response.ok) {
-                throw new Error('Network response was not ok');
+                      throw new Error('Network response was not ok');
                
                 
               }
@@ -184,6 +184,8 @@ export default function AgregarCliente(): React.JSX.Element{
 
             } catch (error) {
               console.error('Error submitting product:', error);
+              alert(`Error: ${error.message}`);
+             
             }
 
             
@@ -208,25 +210,25 @@ export default function AgregarCliente(): React.JSX.Element{
         <div>
             <h1>REGISTRO VISITAS DE CLIENTES</h1>
             <form onSubmit={guardarbasedeDatos}>
-                <input type="text" placeholder="Nombre del negocio" value={nuevavisita.peg_num_clien}
+                <input type="text" placeholder="Numero de cliente" value={nuevavisita.peg_num_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_num_clien:e.target.value})} style={inputEstilo}/> <br></br>
-                <input type="text" placeholder="Ciudad" value={nuevavisita.peg_nom_clien}
+                <input type="text" placeholder="Nombre del negocio" value={nuevavisita.peg_nom_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_nom_clien:e.target.value})}style={inputEstilo}/>
-                <input type="text" placeholder="Estado" value={nuevavisita.peg_ciu_clien}
+                <input type="text" placeholder="Ciudad" value={nuevavisita.peg_ciu_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_ciu_clien:e.target.value})}style={inputEstilo}/><br></br>
-                <input type="text" placeholder="Nombre del encargado" value={nuevavisita.peg_est_clien}
+                <input type="text" placeholder="Estadp" value={nuevavisita.peg_est_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_est_clien:e.target.value})}style={inputEstilo}/>
-                <input type="text" placeholder="Telefono" value={nuevavisita.peg_nom_enc_clien}
+                <input type="text" placeholder="Encargado" value={nuevavisita.peg_nom_enc_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_nom_enc_clien:e.target.value})}style={inputEstilo}/><br></br>
                 <input type="text" placeholder="Telefono" value={nuevavisita.peg_tel_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_tel_clien:e.target.value})}style={inputEstilo}/><br></br>
-                <input type="text" placeholder="Telefono" value={nuevavisita.peg_tex_clien}
+                <input type="text" placeholder="Texto de negocio" value={nuevavisita.peg_tex_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_tex_clien:e.target.value})}style={inputEstilo}/><br></br>
                  <label>algo
                 <input type="checkbox" checked={nuevavisita.peg_sino_clien}
                 
                         onChange={cambio_pega_sino_clie}/><br></br></label>
-                <input type="text" placeholder="Telefono" value={nuevavisita.peg_ubi_clien}
+                <input type="text" placeholder="Ubicacion" value={nuevavisita.peg_ubi_clien}
                         onChange={(e)=>setNuevavisita({...nuevavisita,peg_ubi_clien:e.target.value})}style={inputEstilo}/><br></br>
                                     
                                
