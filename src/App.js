@@ -6,6 +6,8 @@ import AgregarVisita from './components/AgregarVisita.tsx';
 import ConsultarCliente from './components/ConsultarCliente.tsx';
 import ConsultarVisitas from './components/ConsultarVisitas.tsx';
 import Datosdevendedor from './components/ventas.tsx';
+import Villareal from './components/villareal.tsx';
+import Villarealagregarpiso from './components/villareal.tsx';
 
 function App() {
   return (
@@ -26,10 +28,10 @@ function App() {
                 <Link to="/compradores">
                   <button className="w-full">Agregados</button>
                 </Link>
-                <Link to="/otros">
+                <Link to="/mina">
                   <button className="w-full">Mina</button>
                 </Link>
-                <Link to="/otros">
+                <Link to="/villareal">
                   <button className="w-full">Villareal</button>
                 </Link>
               </div>
@@ -40,7 +42,13 @@ function App() {
           <Route path="/vendedores/agregar-visita" element={<AgregarVisita />} />
           <Route path="/vendedores/consultar-cliente" element={<ConsultarCliente />} />
           <Route path="/vendedores/consultar-visitas" element={<ConsultarVisitas />} />
+
+          <Route path="/villareal" element={<Villareal/>} />
+          <Route path="/villareal/villarealagregarpiso" element={<Villarealagregarpiso/>} />
+          
         </Routes>
+
+        
       </div>
     </Router>
     </div>
