@@ -7,7 +7,8 @@ import ConsultarCliente from './components/ConsultarCliente.tsx';
 import ConsultarVisitas from './components/ConsultarVisitas.tsx';
 import Datosdevendedor from './components/ventas.tsx';
 import Villareal from './components/villareal.tsx';
-import Villarealagregarpiso from './components/villareal.tsx';
+import Villarealagregarpiso from './components/villarealagregarpiso.tsx';
+
 
 function App() {
   return (

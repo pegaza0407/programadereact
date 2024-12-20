@@ -73,7 +73,7 @@ export default function Villarealagregarpiso(): React.JSX.Element {
   });
 
   const [arreglovisitas, setArreglovisitas] = useState<villarealproductospisos[]>([]);
-  const API_URL = 'https://mi-backend-a3h0.onrender.com/vendedores';
+  const API_URL = 'https://mi-backend-a3h0.onrender.com/villarealagregarpisos';
 
   // Función para manejar los cambios en los inputs
  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -154,7 +154,7 @@ export default function Villarealagregarpiso(): React.JSX.Element {
 
   return (
     <div>
-      <h1>REGISTRO VISITAS DE CLIENTES</h1>
+      <h1>AGREGAR PISOS</h1>
       <form onSubmit={guardarbasedeDatos}>
         <input
           type="text"
@@ -219,7 +219,7 @@ export default function Villarealagregarpiso(): React.JSX.Element {
           type="text"
           placeholder="Precio por caja al publico"
           value={nuevavisita.preciocajpub_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, preciocaja_villa_productos: e.target.value })}
+          onChange={(e) => setNuevavisita({ ...nuevavisita, preciocajpub_villa_productos: e.target.value })}
           style={inputEstilo}
         /> <br />
 

@@ -1,154 +1,169 @@
 import React, { useState, useEffect } from 'react';
 
-interface Ciudad {
-  nombre: string;
-  ferreterias: Ferreteria[];
-}
-
-interface Ferreteria {
+interface Vendedor {
   _id: string;
-  nombreFerreteria: string;
+  peg_num_clien: string;
+  peg_nom_clien: string;
+  peg_ciu_clien: string;
+  peg_est_clien: string;
+  peg_nom_enc_clien: string;
+  peg_tel_clien: string;
+  peg_tex_clien: string;
+  peg_ima_clien: string;
+  peg_sino_clien: boolean;
+  peg_ubi_clien: string;
 }
 
-interface FormData {
-  ciudad: string;
-  clienteId: string;
+interface Visita {
+  ferreteriaId: string;
   descripcion: string;
   fecha: string;
 }
 
+const API_URL = 'https://mi-backend-a3h0.onrender.com/vendedoresvisista';
+
 const AgregarVisita: React.FC = () => {
-  const [ciudades, setCiudades] = useState<Ciudad[]>([]);
-  const [ferreterias, setFerreterias] = useState<Ferreteria[]>([]);
-  const [formData, setFormData] = useState<FormData>({
-    ciudad: '',
-    clienteId: '',
+  const [vendedores, setVendedores] = useState<Vendedor[]>([]);
+  const [ciudades, setCiudades] = useState<string[]>([]);
+  const [ciudadBuscada, setCiudadBuscada] = useState('');
+  const [ciudadSeleccionada, setCiudadSeleccionada] = useState('');
+  const [nuevaVisita, setNuevaVisita] = useState<Visita>({
+    ferreteriaId: '',
     descripcion: '',
     fecha: ''
   });
 
   useEffect(() => {
-    // Simular la carga de ciudades desde la API
-    // En una implementación real, esto sería una llamada a la API
-    const ciudadesMock: Ciudad[] = [
-      { 
-        nombre: 'Ciudad A', 
-        ferreterias: [
-          { _id: '1', nombreFerreteria: 'Ferretería 1' },
-          { _id: '2', nombreFerreteria: 'Ferretería 2' }
-        ]
-      },
-      { 
-        nombre: 'Ciudad B', 
-        ferreterias: [
-          { _id: '3', nombreFerreteria: 'Ferretería 3' },
-          { _id: '4', nombreFerreteria: 'Ferretería 4' }
-        ]
-      },
-    ];
-    setCiudades(ciudadesMock);
+    const fetchVendedores = async () => {
+      try {
+        const response = await fetch('https://mi-backend-a3h0.onrender.com/vendedores');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: Vendedor[] = await response.json();
+        setVendedores(data);
+        const uniqueCiudades = Array.from(new Set(data.map((v: Vendedor) => v.peg_ciu_clien.toLowerCase())))
+          .map(ciudad => ciudad.charAt(0).toUpperCase() + ciudad.slice(1));
+        setCiudades(uniqueCiudades);
+      } catch (error) {
+        console.error('Error fetching vendedores:', error);
+      }
+    };
+
+    fetchVendedores();
   }, []);
 
-  const handleCiudadChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCiudad = e.target.value;
-    setFormData({ ...formData, ciudad: selectedCiudad, clienteId: '' });
-    const ferreteriasEnCiudad = ciudades.find(c => c.nombre === selectedCiudad)?.ferreterias || [];
-    setFerreterias(ferreteriasEnCiudad);
-  };
+  const ciudadesFiltradas = ciudadBuscada
+    ? ciudades.filter(ciudad => 
+        ciudad.toLowerCase().startsWith(ciudadBuscada.toLowerCase())
+      )
+    : [];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const ferreteriasFiltradas = vendedores.filter(vendedor => 
+    vendedor.peg_ciu_clien.toLowerCase() === ciudadSeleccionada.toLowerCase()
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     try {
-      const response = await fetch('/api/visitas', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const method = 'POST';
+      const url = API_URL;
+      const response = await fetch(url, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevaVisita)
       });
-      if (response.ok) {
-        alert('Visita agregada exitosamente');
-        setFormData({
-          ciudad: '',
-          clienteId: '',
-          descripcion: '',
-          fecha: ''
-        });
-      } else {
-        alert('Error al agregar visita');
+      if (!response.ok) {
+        throw new Error('Network response was not ok'); 
       }
+      setNuevaVisita({
+        ferreteriaId: '',
+        descripcion: '',
+        fecha: ''
+      });
+      
+      alert('Visita guardada con éxito');   
+
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error al agregar visita');
+      console.error('Error al guardar la visita:', error);
+      alert('Error al guardar la visita');
     }
   };
 
+  
+
+
+
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Agregar Visita</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="ciudad">Ciudad</label>
-          <select
-            id="ciudad"
-            name="ciudad"
-            value={formData.ciudad}
-            onChange={handleCiudadChange}
-            required
-          >
-            <option value="">Seleccione una ciudad</option>
-            {ciudades.map((ciudad) => (
-              <option key={ciudad.nombre} value={ciudad.nombre}>
-                {ciudad.nombre}
-              </option>
+      <h1 className="text-2xl font-bold mb-4">Consultar Vendedor</h1>
+      
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Buscar ciudad"
+          value={ciudadBuscada}
+          onChange={(e) => setCiudadBuscada(e.target.value)}
+          className="border p-2 rounded"
+        />
+        {ciudadesFiltradas.length > 0 && (
+          <ul className="mt-2">
+            {ciudadesFiltradas.map((ciudad, index) => (
+              <li 
+                key={index} 
+                onClick={() => {
+                  setCiudadSeleccionada(ciudad);
+                  setCiudadBuscada('');
+                }}
+                className="cursor-pointer hover:bg-gray-100 p-1"
+              >
+                {ciudad}
+              </li>
             ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="clienteId">Ferretería</label>
-          <select
-            id="clienteId"
-            name="clienteId"
-            value={formData.clienteId}
-            onChange={handleChange}
-            required
-            disabled={!formData.ciudad}
+          </ul>
+        )}
+      </div>
+
+      {ciudadSeleccionada && (
+        <div className="mb-4">
+          <select 
+            value={nuevaVisita.ferreteriaId} 
+            onChange={(e) => setNuevaVisita({...nuevaVisita, ferreteriaId: e.target.value})}
+            className="border p-2 rounded w-full"
           >
             <option value="">Seleccione una ferretería</option>
-            {ferreterias.map((ferreteria) => (
+            {ferreteriasFiltradas.map((ferreteria) => (
               <option key={ferreteria._id} value={ferreteria._id}>
-                {ferreteria.nombreFerreteria}
+                {ferreteria.peg_nom_clien}
               </option>
             ))}
           </select>
         </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="descripcion">Descripción de la Visita</label>
           <textarea
-            id="descripcion"
-            name="descripcion"
-            value={formData.descripcion}
-            onChange={handleChange}
-            required
+            placeholder="Descripción de la visita"
+            value={nuevaVisita.descripcion}
+            onChange={(e) => setNuevaVisita({...nuevaVisita, descripcion: e.target.value})}
+            className="border p-2 rounded w-full"
           />
         </div>
         <div>
-          <label htmlFor="fecha">Fecha de la Visita</label>
           <input
-            id="fecha"
-            name="fecha"
             type="date"
-            value={formData.fecha}
-            onChange={handleChange}
-            required
+            value={nuevaVisita.fecha}
+            onChange={(e) => setNuevaVisita({...nuevaVisita, fecha: e.target.value})}
+            className="border p-2 rounded"
           />
         </div>
-        <button type="submit">Guardar Visita</button>
+        <button type="submit">
+          Guardar Visita
+        </button>
       </form>
+      
     </div>
   );
 };
