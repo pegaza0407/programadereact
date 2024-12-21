@@ -134,141 +134,53 @@ export default function Villarealconsultartodopiso(): React.JSX.Element{
  // };
 
   // Función para guardar los datos en la base de datos
-  const guardarbasedeDatos = async (e: React.FormEvent) => {
-    e.preventDefault();
+
+  //const guardarbasedeDatos = async (e: React.FormEvent) => {
+  //  e.preventDefault();
 
     // Mostrar los datos en consola para depuración
-    console.log('Datos a enviar al backend:', nuevavisita);
+  //  console.log('Datos a enviar al backend:', nuevavisita);
 
-    try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nuevavisita), // Asegúrate de que los datos estén en formato JSON
-      });
+ //   try {
+  //    const response = await fetch(API_URL, {
+  //      method: 'POST',
+  //      headers: { 'Content-Type': 'application/json' },
+  //      body: JSON.stringify(nuevavisita), // Asegúrate de que los datos estén en formato JSON
+  //    });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+  //    if (!response.ok) {
+  //      throw new Error('Network response was not ok');
+  //    }
 
-      setNuevavisita({
-        num_villa_productos:'',
-        medida_vila_productos:'',
-        nombre_villa_productos:'',
-        color_villa_productos:'',
-        cajamedida_villa_productos:'',
-        preciometro_villa_productos:'',
-        preciocaja_villa_productos:'',
-        preciometropub_villa_productos:'',
-        preciocajpub_villa_productos:'',
-        proveedornom_villa_productos:'',       
-        imagen_villa_productos:'',
-        tipo_villa_productos:'',
-      });
-
-      alert('Datos guardados');
-    } catch (error) {
-      console.error('Error submitting product:', error);
-      alert(`Error: ${error.message}`);
-    }
-  };
+  //    setNuevavisita({
+   ////     num_villa_productos:'',
+ //       medida_vila_productos:'',
+ //       nombre_villa_productos:'',
+ ////       color_villa_productos:'',
+  //      cajamedida_villa_productos:'',
+  //      preciometro_villa_productos:'',
+  //      preciocaja_villa_productos:'',
+ //       preciometropub_villa_productos:'',
+ //       preciocajpub_villa_productos:'',
+//        proveedornom_villa_productos:'',       
+//        imagen_villa_productos:'',
+//        tipo_villa_productos:'',
+ //     });
+//
+ //     alert('Datos guardados');
+//    } catch (error) {
+//      console.error('Error submitting product:', error);
+//      alert(`Error: ${error.message}`);
+ //   }
+ // };
 
   return (
     <div>
-      <h1>AGREGAR PISOS</h1>
-      <form onSubmit={guardarbasedeDatos}>
-        <input
-          type="text"
-          placeholder="Numero de piso"
-          value={nuevavisita.num_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, num_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-
-        <input
-          type="text"
-          placeholder="Medida del piso"
-          value={nuevavisita.medida_vila_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, medida_vila_productos: e.target.value })}
-          style={inputEstilo}
-        />
-        <input
-          type="text"
-          placeholder="Nombre del piso"
-          value={nuevavisita.nombre_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, nombre_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-        <input
-          type="text"
-          placeholder="Color"
-          value={nuevavisita.color_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, color_villa_productos: e.target.value })}
-          style={inputEstilo}
-        />
-        <input
-          type="text"
-          placeholder="Medida de la caja"
-          value={nuevavisita.cajamedida_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, cajamedida_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-        <input
-          type="text"
-          placeholder="Precio por metro"
-          value={nuevavisita.preciometro_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, preciometro_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-        <input
-          type="text"
-          placeholder="Precio por caja"
-          value={nuevavisita.preciocaja_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, preciocaja_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-        
-        <input
-          type="text"
-          placeholder="Precio por metro al publico"
-          value={nuevavisita.preciometropub_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, preciometropub_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-
-        <input
-          type="text"
-          placeholder="Precio por caja al publico"
-          value={nuevavisita.preciocajpub_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, preciocajpub_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-
-        <input
-          type="text"
-          placeholder="nombre proveedor"
-          value={nuevavisita.proveedornom_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, proveedornom_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
-
-        <input
-          type="text"
-          placeholder="tipo de piso"
-          value={nuevavisita.tipo_villa_productos}
-          onChange={(e) => setNuevavisita({ ...nuevavisita, tipo_villa_productos: e.target.value })}
-          style={inputEstilo}
-        /> <br />
+      <h1>LISTA DE TODOS LOS PISOS</h1>
+      <form >
         
 
-        <input type="file" accept="image/*" onChange={cambiodeImgen} /> <br />
-        {nuevavisita.imagen_villa_productos && <img src={nuevavisita.imagen_villa_productos} alt="Imagen del negocio" style={imagenestilo} />} <br />
-
-        
-
-        <button type="submit" style={buttonEstilo}>Agregar Piso</button>
-
-        <h2>Lista de Pisos</h2>
+       
       <div>
         {arreglovisitas.length === 0 ? (
           <p>No hay productos disponibles.</p>
@@ -276,18 +188,35 @@ export default function Villarealconsultartodopiso(): React.JSX.Element{
           <table>
             <thead>
               <tr>
-                <th>Numero de Piso</th>
+             
+                <th>Numero</th>
+                <th>Medida</th>
                 <th>Nombre</th>
                 <th>Color</th>
+                <th>MEdida </th>
+                <th>Precio metro</th>
+                <th>Precio caja</th>
+                <th>Precio metro publico</th>
+                <th>Precio caja publico</th>
+                <th>Proveedor</th>
+                <th>Tipo producto</th>
                 <th>Imagen</th>
-              </tr>
+                </tr>
             </thead>
             <tbody>
               {arreglovisitas.map((producto) => (
                 <tr key={producto._id}>
                   <td>{producto.num_villa_productos}</td>
+                  <td>{producto.medida_vila_productos}</td>
                   <td>{producto.nombre_villa_productos}</td>
                   <td>{producto.color_villa_productos}</td>
+                  <td>{producto.cajamedida_villa_productos}</td>
+                  <td>{producto.preciometro_villa_productos}</td>
+                  <td>{producto.preciocaja_villa_productos}</td>
+                  <td>{producto.preciometropub_villa_productos}</td>
+                  <td>{producto.preciocajpub_villa_productos}</td>
+                  <td>{producto.proveedornom_villa_productos}</td>
+                  <td>{producto.tipo_villa_productos}</td>
                   <td>
                     {producto.imagen_villa_productos && (
                       <img
