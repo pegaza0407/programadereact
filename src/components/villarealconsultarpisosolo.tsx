@@ -5,7 +5,7 @@ import Datosdevendedor from "./ventas";
 
 
 
-export default function Pegaza(): React.JSX.Element{
+export default function Villarealconsultarpisosolo(): React.JSX.Element{
 
 
     return(
@@ -15,7 +15,7 @@ export default function Pegaza(): React.JSX.Element{
 
 
         <div>
-
+            bueno
       
       </div>
    

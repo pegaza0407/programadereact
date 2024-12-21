@@ -8,6 +8,8 @@ import ConsultarVisitas from './components/ConsultarVisitas.tsx';
 import Datosdevendedor from './components/ventas.tsx';
 import Villareal from './components/villareal.tsx';
 import Villarealagregarpiso from './components/villarealagregarpiso.tsx';
+import Villarealconsultartodopiso from './components/villarealconsultartodopiso.tsx';
+import Villarealconsultarpisosolo from './components/villarealconsultarpisosolo.tsx';
 
 
 function App() {
@@ -46,7 +48,8 @@ function App() {
 
           <Route path="/villareal" element={<Villareal/>} />
           <Route path="/villareal/villarealagregarpiso" element={<Villarealagregarpiso/>} />
-          
+          <Route path="/villareal/villarealconsultartodopiso" element={<Villarealconsultartodopiso/>} />
+          <Route path="/villareal/villarealconsultarpisosolo" element={<Villarealconsultarpisosolo/>} />
         </Routes>
 
         
