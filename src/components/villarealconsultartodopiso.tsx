@@ -77,16 +77,7 @@ export default function Villarealconsultartodopiso(): React.JSX.Element{
   const [arreglovisitas, setArreglovisitas] = useState<villarealproductospisos[]>([]);
   const API_URL = 'https://mi-backend-a3h0.onrender.com/villarealagregarpisos';
 
-  // Función para manejar los cambios en los inputs
- // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //  const { name, value } = e.target;
-
-  //  if (name === 'fechavisita') {
-  //    setNuevavisita((prev) => ({ ...prev, fechavisita: new Date(value) }));
-   // } else {
-   //   setNuevavisita((prev) => ({ ...prev, [name]: value }));
-  //  }
- // };
+  
  // Función para cargar los productos desde la base de datos
  const cargarProductos = async () => {
     try {
@@ -122,57 +113,7 @@ export default function Villarealconsultartodopiso(): React.JSX.Element{
     }
   };
 
-  // Función para manejar el cambio en el checkbox
- // const cambio_pega_sino_clie = (e: React.ChangeEvent<HTMLInputElement>) => {
-   // const { type, value } = e.target;
-  //  if (type === 'checkbox') {
-  //    setNuevavisita((prev) => ({
-   //     ...prev,
-    //    peg_sino_clien: (e.target as HTMLInputElement).checked,
-  //    }));
-  //  }
- // };
-
-  // Función para guardar los datos en la base de datos
-
-  //const guardarbasedeDatos = async (e: React.FormEvent) => {
-  //  e.preventDefault();
-
-    // Mostrar los datos en consola para depuración
-  //  console.log('Datos a enviar al backend:', nuevavisita);
-
- //   try {
-  //    const response = await fetch(API_URL, {
-  //      method: 'POST',
-  //      headers: { 'Content-Type': 'application/json' },
-  //      body: JSON.stringify(nuevavisita), // Asegúrate de que los datos estén en formato JSON
-  //    });
-
-  //    if (!response.ok) {
-  //      throw new Error('Network response was not ok');
-  //    }
-
-  //    setNuevavisita({
-   ////     num_villa_productos:'',
- //       medida_vila_productos:'',
- //       nombre_villa_productos:'',
- ////       color_villa_productos:'',
-  //      cajamedida_villa_productos:'',
-  //      preciometro_villa_productos:'',
-  //      preciocaja_villa_productos:'',
- //       preciometropub_villa_productos:'',
- //       preciocajpub_villa_productos:'',
-//        proveedornom_villa_productos:'',       
-//        imagen_villa_productos:'',
-//        tipo_villa_productos:'',
- //     });
-//
- //     alert('Datos guardados');
-//    } catch (error) {
-//      console.error('Error submitting product:', error);
-//      alert(`Error: ${error.message}`);
- //   }
- // };
+ 
 
   return (
     <div>
