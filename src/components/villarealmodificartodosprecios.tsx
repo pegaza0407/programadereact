@@ -109,39 +109,39 @@ export default function Villarealmodificartodosprecio(): React.JSX.Element{
 
  // Función para guardar los cambios
  const guardarCambios = async () => {
-    try {
-      const productosActualizados = arreglovisitas.filter((producto) =>
-        productosSeleccionados.has(producto._id)
-      );
-      console.log('Productos seleccionados:', productosActualizados);
+  try {
+    const productosActualizados = arreglovisitas.filter((producto) =>
+      productosSeleccionados.has(producto._id)
+    );
+    console.log('Productos seleccionados:', productosActualizados);
 
-      if (productosActualizados.length === 0) {
-        console.log('No hay productos seleccionados para guardar');
-        return;
-      }
-      // Aquí podrías hacer una petición para guardar los productos modificados en la base de datos
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        body: JSON.stringify(productosActualizados),
+    if (productosActualizados.length === 0) {
+      console.log('No hay productos seleccionados para guardar');
+      return;
+    }
+
+    for (const producto of productosActualizados) {
+      const response = await fetch(`${API_URL}/${producto._id}`, {
+        method: 'PUT',
+        body: JSON.stringify(producto),
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-     
-
-      if (response.ok) {
-        setMensajeGuardado('Los cambios se han guardado correctamente.'); // Establece el mensaje de éxito
-        setTimeout(() => {
-          setMensajeGuardado(null); // Borra el mensaje después de un tiempo
-        }, 3000);
-      } else {
+      if (!response.ok) {
         throw new Error('Error al guardar los productos');
       }
-    } catch (error) {
-      console.error('Error al guardar los productos:', error);
     }
-  };
+
+    setMensajeGuardado('Los cambios se han guardado correctamente.'); // Establece el mensaje de éxito
+    setTimeout(() => {
+      setMensajeGuardado(null); // Borra el mensaje después de un tiempo
+    }, 3000);
+  } catch (error) {
+    console.error('Error al guardar los productos:', error);
+  }
+};
 
 
 
