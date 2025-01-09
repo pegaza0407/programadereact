@@ -15,7 +15,7 @@ export default function villareal(): React.JSX.Element{
           <Link to="/villareal/villarealagregarpiso">
             <button className="w-full">Agregar Pisos</button>
           </Link>
-          <Link to="/vendedores/agregar-visita">
+          <Link to="/villareal/villarealmodificartodosprecio">
             <button className="w-full">Modificar precios</button>
           </Link>
           <Link to="/villareal/villarealconsultartodopiso">
