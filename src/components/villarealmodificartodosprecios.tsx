@@ -19,6 +19,7 @@ interface villarealproductospisos {
 
 }
 
+
 const inputEstilo: React.CSSProperties = {
   margin: '5px',
   padding: '10px',
