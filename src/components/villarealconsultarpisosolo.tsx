@@ -62,6 +62,7 @@ const imagenestilo: React.CSSProperties = {
   width: '30%',
 };
 
+
 export default function Villarealconsultartodopiso(): React.JSX.Element{
 
   const [nuevavisita, setNuevavisita] = useState<Omit<villarealproductospisos, '_id'>>({
